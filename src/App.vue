@@ -1,6 +1,7 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
+    <router-link to="/employees">Employees</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
   <router-view />
@@ -8,6 +9,8 @@
 
 <style>
 #app {
+  max-width: 1500px;
+  margin: auto;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -21,10 +24,16 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #526409;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #8aa716;
+}
+h1 {
+  color: #5a6f08;
+}
+h2 {
+  color: #6c8312;
 }
 </style>
