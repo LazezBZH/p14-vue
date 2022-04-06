@@ -8,6 +8,9 @@
 </template>
 
 <style>
+body {
+  background-color: #d6db99a9;
+}
 #app {
   max-width: 1500px;
   margin: auto;

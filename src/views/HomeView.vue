@@ -9,7 +9,7 @@
           >View Current Employees &#x21AA;</router-link
         >
       </nav>
-      <MyForm />
+      <MyForm @createemployee="addEmployee" />
     </div>
   </div>
 </template>
@@ -18,12 +18,21 @@
 // @ is an alias to /src
 import MyBanner from "@/components/MyBanner.vue";
 import MyForm from "@/components/MyForm.vue";
+import employeesServices from "@/services/employees.js";
 
 export default {
   name: "HomeView",
   components: {
     MyBanner,
     MyForm,
+  },
+  setup() {
+    function addEmployee(data) {
+      console.log("coucou");
+      console.log("Home.vue | addEmployee()", data);
+      employeesServices.create(data);
+    }
+    return { addEmployee };
   },
 };
 </script>

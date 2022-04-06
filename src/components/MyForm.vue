@@ -4,7 +4,12 @@
     <form v-on:submit.prevent="createEmployee">
       <div class="datas">
         <p>First Name</p>
-        <input type="text" placeholder="Enter First Name" v-model="firstName" />
+        <input
+          type="text"
+          placeholder="Enter First Name"
+          v-model="firstName"
+          ref="txtName"
+        />
         <p>Last Name</p>
         <input type="text" placeholder="Enter Last Name" v-model="lastName" />
         <p>Birth Date</p>
@@ -38,16 +43,17 @@
           </option>
         </select>
       </div>
+      <button :disabled="!isFormValid">Save &#x00AE;</button>
     </form>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted, computed } from "vue";
 export default {
   name: "MyForm",
-
-  setup() {
+  emits: ["createemployee"],
+  setup(props, context) {
     const firstName = ref("");
     const lastName = ref("");
     const birthDate = ref("");
@@ -126,6 +132,58 @@ export default {
       { id: 4, value: "humanResources", name: "Human Resources" },
       { id: 5, value: "legal", name: "Legal" },
     ]);
+    let txtName = ref(null);
+
+    function createEmployee() {
+      const employee = {
+        id: Date.now(),
+        firstName: firstName.value,
+        lastName: lastName.value,
+        birthDate: birthDate.value,
+        startDate: startDate.value,
+        street: street.value,
+        city: city.value,
+        state: state.value,
+        zipCode: zipCode.value,
+        department: department.value,
+      };
+      console.log("empl", employee);
+      context.emit("createemployee", employee);
+      resetForm();
+    }
+    function resetForm() {
+      firstName.value = "";
+      lastName.value = "";
+      birthDate.value = "";
+      startDate.value = "";
+      street.value = "";
+      city.value = "";
+      state.value = "";
+      zipCode.value = "";
+      department.value = "";
+      txtName.value.focus();
+    }
+    onMounted(() => {
+      txtName.value.focus();
+    });
+    const isFormValid = computed(() => {
+      if (
+        firstName.value !== "" &&
+        lastName.value !== "" &&
+        birthDate.value !== "" &&
+        startDate.value !== "" &&
+        street.value !== "" &&
+        city.value !== "" &&
+        state.value !== "" &&
+        zipCode.value !== "" &&
+        department.value !== ""
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
     return {
       firstName,
       lastName,
@@ -138,6 +196,9 @@ export default {
       departments,
       department,
       zipCode,
+      createEmployee,
+      txtName,
+      isFormValid,
     };
   },
 };
@@ -191,5 +252,16 @@ export default {
 .adress input,
 .adress select {
   width: 85%;
+}
+
+button {
+  width: 5rem;
+  height: 2rem;
+  margin: 1rem auto 0;
+  background-color: #444444;
+  color: white;
+  border-radius: 0.5rem;
+  padding-bottom: 1.6rem;
+  padding-top: 0.6rem;
 }
 </style>
