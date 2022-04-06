@@ -25,6 +25,7 @@ nav {
 nav a {
   font-weight: bold;
   color: #526409;
+  text-decoration: none;
 }
 
 nav a.router-link-exact-active {
@@ -34,6 +35,7 @@ h1 {
   color: #5a6f08;
 }
 h2 {
+  margin: 0 auto;
   color: #6c8312;
 }
 </style>

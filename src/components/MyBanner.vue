@@ -8,10 +8,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
+  name: "MyBanner",
 };
 </script>
 
@@ -19,6 +16,7 @@ export default {
 <style scoped>
 .banner {
   margin-top: 5rem;
+  height: 22vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
