@@ -38,7 +38,7 @@
         <p>Department</p>
         <select name="" id="" v-model="department">
           <option disabled value="">Select a Department</option>
-          <option v-for="dep in departments" :value="dep.name" :key="dep.id">
+          <option v-for="dep in departments" :value="dep.value" :key="dep.id">
             {{ dep.name }}
           </option>
         </select>
@@ -126,11 +126,11 @@ export default {
       { id: 59, value: "WY", name: "Wyoming" },
     ]);
     const departments = ref([
-      { id: 1, value: "sales", name: "Sales" },
-      { id: 2, value: "marketing", name: "Marketing" },
-      { id: 3, value: "engineering", name: "Engineering" },
-      { id: 4, value: "humanResources", name: "Human Resources" },
-      { id: 5, value: "legal", name: "Legal" },
+      { id: 1, value: "Sales", name: "Sales" },
+      { id: 2, value: "Marketing", name: "Marketing" },
+      { id: 3, value: "Engineering", name: "Engineering" },
+      { id: 4, value: "Human Resources", name: "Human Resources" },
+      { id: 5, value: "Legal", name: "Legal" },
     ]);
     let txtName = ref(null);
 

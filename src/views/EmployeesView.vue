@@ -1,7 +1,6 @@
 <template>
   <div class="employees">
     <MyBanner />
-    <h2>Current Employees</h2>
 
     <MyModal
       v-if="isInEditMode"
@@ -9,37 +8,62 @@
       @updateemployee="updateEmployee($event)"
       @cancel="cancelEdit"
     />
-    <input
-      type="search"
-      name=""
-      id="search"
-      placeholder="Filtrer"
-      v-model="letters"
-      @input="filter"
-    />
 
-    <div>
-      <div
-        class="employee"
-        v-for="employee in employeesFiltered"
-        :key="employee.id"
-      >
-        <h3>{{ employee.firstName }}</h3>
-        <p>{{ employee.lastName }}</p>
-        <p>{{ employee.startDate }}</p>
-
-        <p>{{ employee.department }}</p>
-        <p>{{ employee.birthDate }}</p>
-        <p>{{ employee.street }}</p>
-        <p>{{ employee.city }}</p>
-        <p>{{ employee.state }}</p>
-        <p>{{ employee.zipCode }}</p>
-
-        <button @click="() => deleteEmployee(employee.id)">Supprimer</button>
-        <button @click="() => toggle(employee)">Modifier</button>
-      </div>
+    <div class="input">
+      <input
+        type="search"
+        name=""
+        id="search"
+        placeholder="Search"
+        v-model="letters"
+        @input="filter"
+      />
     </div>
+    <table width="90%" border="1">
+      <caption>
+        <h2>Current Employees</h2>
+      </caption>
+
+      <thead>
+        <tr>
+          <th width="9%">First Name</th>
+          <th width="9%">Last Name</th>
+          <th width="9%">Start Date</th>
+          <th width="9%">Department</th>
+          <th width="9%">Birth Date</th>
+          <th width="9%">Street</th>
+          <th width="9%">City</th>
+          <th width="9%">State</th>
+          <th width="9%">Zip Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-if="employees.length === 0">
+          <td colspan="11" class="no-data">No data available in table</td>
+        </tr>
+        <tr v-for="employee in employeesFiltered" :key="employee.id">
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.startDate }}</td>
+
+          <td>{{ employee.department }}</td>
+          <td>{{ employee.birthDate }}</td>
+          <td>{{ employee.street }}</td>
+          <td>{{ employee.city }}</td>
+          <td>{{ employee.state }}</td>
+          <td>{{ employee.zipCode }}</td>
+
+          <td>
+            <button @click="() => deleteEmployee(employee.id)">Delete</button>
+          </td>
+          <td><button @click="() => toggle(employee)">Update</button></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+  <nav class="link" id="link">
+    <router-link to="/">&#x21A9; Home</router-link>
+  </nav>
 </template>
 <script>
 // @ is an alias to /src
@@ -140,8 +164,91 @@ export default {
 
 <style scoped>
 h2 {
-  text-align: left;
-  margin-left: 10%;
-  font-size: 1.8rem;
+  width: 25%;
+  color: #444444;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #d5db99;
+  border: 0.5rem ridge #d5db99;
+  margin-bottom: 0.5rem;
+}
+table {
+  table-layout: fixed;
+  width: 95%;
+  border-collapse: collapse;
+  border: 0.5rem ridge #444444;
+  margin: 1rem auto;
+  text-align: center;
+}
+th,
+td {
+  color: black;
+  padding: 0.3rem;
+  font-size: 0.9rem;
+}
+thead th {
+  padding-bottom: 0.5rem;
+  font-size: 1.4rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+}
+table tbody tr:nth-child(odd) {
+  background-color: #eaecce;
+  border-bottom: solid 0.05rem #9fa09b;
+}
+table tbody tr:nth-child(even) {
+  background-color: #daddc8;
+  border-bottom: solid 0.05rem #9fa09b;
+}
+
+table tbody tr:hover {
+  background-color: #b4d179;
+}
+
+table td:nth-child(3),
+table td:nth-child(4) {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+button {
+  margin: auto 1%;
+}
+input {
+  height: 2rem;
+  width: 10rem;
+  margin-left: 1rem;
+  padding-left: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgb(206, 206, 128);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.input {
+  margin-right: 0;
+  margin-bottom: -3rem;
+  padding-right: 5%;
+  text-align: right;
+}
+caption {
+  width: auto;
+}
+.no-data {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.link {
+  margin: 0.5rem auto;
+  width: 5%;
+  height: 0.1rem;
+  line-height: 0.1rem;
+  padding: auto;
+  background-color: #444;
+  border-radius: 0.5rem;
+}
+.link a {
+  color: white;
+}
+button {
+  width: 80%;
 }
 </style>

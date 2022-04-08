@@ -2,7 +2,7 @@
   <div class="modal-background">
     <div class="modal">
       <div>
-        <h2>Modifier cet employé</h2>
+        <h1>Update this employee's data</h1>
         <form @submit.prevent="saveEmployee">
           <div class="datas">
             <p>First Name</p>
@@ -18,9 +18,17 @@
               v-model="employeeToEdit.lastName"
             />
             <p>Birth Date</p>
-            <input type="date" v-model="employeeToEdit.birthDate" />
+            <input
+              class="date"
+              type="date"
+              v-model="employeeToEdit.birthDate"
+            />
             <p>Start Date</p>
-            <input type="date" v-model="employeeToEdit.startDate" />
+            <input
+              class="date"
+              type="date"
+              v-model="employeeToEdit.startDate"
+            />
             <div class="adress">
               <p>Street</p>
               <input
@@ -66,8 +74,8 @@
               </option>
             </select>
           </div>
-          <button :disabled="!isFormValid">Sauvegarder</button>
-          <button @click="cancel">Annuler</button>
+          <button @click="cancel">Cancel</button>
+          <button :disabled="!isFormValid">Save &#x1F4BE;</button>
         </form>
       </div>
     </div>
@@ -148,11 +156,11 @@ export default {
     ]);
     let state = ref("");
     const departments = ref([
-      { id: 1, value: "sales", name: "Sales" },
-      { id: 2, value: "marketing", name: "Marketing" },
-      { id: 3, value: "engineering", name: "Engineering" },
-      { id: 4, value: "humanResources", name: "Human Resources" },
-      { id: 5, value: "legal", name: "Legal" },
+      { id: 1, value: "Sales", name: "Sales" },
+      { id: 2, value: "Marketing", name: "Marketing" },
+      { id: 3, value: "Engineering", name: "Engineering" },
+      { id: 4, value: "Human Resources", name: "Human Resources" },
+      { id: 5, value: "Legal", name: "Legal" },
     ]);
     let department = ref("");
 
@@ -208,17 +216,21 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
   display: table;
   transition: opacity 05s ease;
 }
 .modal {
-  width: 50%;
+  width: 40%;
   margin: 2rem auto;
-  border: 0.3rem solid #42b983;
+  border: 0.5rem solid #2c3e50;
   border-radius: 0.8rem;
-  background-color: white;
+  background-color: rgb(196, 196, 170);
   padding-bottom: 2rem;
+}
+.datas {
+  width: 60%;
+  margin: auto;
 }
 input,
 textarea,
@@ -234,13 +246,29 @@ button {
   margin: 0.5rem;
   border: none;
   border-radius: 0.3rem;
-  background: #42b983;
+  background: #2c3e50;
   color: white;
-  padding: 0.4rem;
+  padding: 0.7rem;
   cursor: pointer;
 }
 button:disabled {
   color: rgba(255, 0, 0, 0.4);
   cursor: not-allowed;
+}
+.adress {
+  width: 55%;
+  border: solid 2px #6c8312;
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.2rem 14rem 02rem;
+  margin: 1.5rem auto;
+  height: 14rem;
+  position: relative;
+}
+.adress input,
+.adress select {
+  width: 85%;
+}
+.date {
+  width: 30%;
 }
 </style>
