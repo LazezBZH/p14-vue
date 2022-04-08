@@ -38,7 +38,7 @@
         <p>Department</p>
         <select name="" id="" v-model="department">
           <option disabled value="">Select a Department</option>
-          <option v-for="dep in departments" :value="dep.value" :key="dep.id">
+          <option v-for="dep in departments" :value="dep.name" :key="dep.id">
             {{ dep.name }}
           </option>
         </select>
@@ -263,5 +263,8 @@ button {
   border-radius: 0.5rem;
   padding-bottom: 1.6rem;
   padding-top: 0.6rem;
+}
+button:disabled {
+  background-color: #4444443b;
 }
 </style>

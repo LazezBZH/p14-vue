@@ -15,7 +15,7 @@ function read() {
 }
 
 function updateEmployee(employee) {
-  const index = employees.findIndex((e) => e.id === employee.id);
+  const index = employees.findIndex((emp) => emp.id === employee.id);
   if (index === -1) {
     return;
   }
@@ -24,7 +24,7 @@ function updateEmployee(employee) {
 }
 
 function deleteEmployee(id) {
-  employees = employees.filter((e) => e.id !== id);
+  employees = employees.filter((emp) => emp.id !== id);
   save();
 }
 
