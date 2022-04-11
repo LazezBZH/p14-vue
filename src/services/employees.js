@@ -28,25 +28,6 @@ function deleteEmployee(id) {
   save();
 }
 
-/*function convertCase(temporalityKebabCase) {
-  let result;
-  switch (temporalityKebabCase) {
-    case "short-term":
-      result = "court terme";
-      break;
-    case "medium-term":
-      result = "moyen terme";
-      break;
-    case "long-term":
-      result = "long terme";
-      break;
-    default:
-      result = temporalityKebabCase;
-      break;
-  }
-  return result;
-}*/
-
 function save() {
   localStorage.setItem(storageKey, JSON.stringify(employees));
 }

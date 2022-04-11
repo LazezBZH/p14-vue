@@ -38,9 +38,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-if="employees.length === 0">
+        <tr v-if="employees == undefined || employees.length <= 0">
           <td colspan="11" class="no-data">No data available in table</td>
         </tr>
+
         <tr v-for="employee in employeesFiltered" :key="employee.id">
           <td>{{ employee.firstName }}</td>
           <td>{{ employee.lastName }}</td>
@@ -99,8 +100,10 @@ export default {
     const letters = ref("");
 
     let employeesFiltered = ref([]);
+
     let isInEditMode = ref(false);
     let employeeToEdit = ref(null);
+
     employees.value = employeesService.read();
     filter();
 
