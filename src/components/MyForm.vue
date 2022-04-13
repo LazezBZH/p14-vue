@@ -56,13 +56,13 @@ export default {
   setup(props, context) {
     const firstName = ref("");
     const lastName = ref("");
-    const birthDate = ref("");
     const startDate = ref("");
+    const department = ref("");
+    const birthDate = ref("");
     const street = ref("");
     const city = ref("");
     const state = ref("");
     const zipCode = ref("");
-    const department = ref("");
 
     const states = ref([
       { id: 1, value: "AL", name: "Alabama" },
@@ -139,13 +139,13 @@ export default {
         id: Date.now(),
         firstName: firstName.value,
         lastName: lastName.value,
-        birthDate: birthDate.value,
         startDate: startDate.value,
+        department: department.value,
+        birthDate: birthDate.value,
         street: street.value,
         city: city.value,
         state: state.value,
         zipCode: zipCode.value,
-        department: department.value,
       };
       console.log("empl", employee);
       context.emit("createemployee", employee);
@@ -187,14 +187,14 @@ export default {
     return {
       firstName,
       lastName,
-      birthDate,
+      departments,
+      department,
       startDate,
+      birthDate,
       street,
       city,
       state,
       states,
-      departments,
-      department,
       zipCode,
       createEmployee,
       txtName,

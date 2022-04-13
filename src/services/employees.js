@@ -36,10 +36,47 @@ function retrieveEmployees() {
   const fromLocalStorage = localStorage.getItem(storageKey);
   return JSON.parse(fromLocalStorage);
 }
+function convertCase(theadConvert) {
+  let result;
+  switch (theadConvert) {
+    case "firstName":
+      result = "First Name";
+      break;
+    case "lastName":
+      result = "Last Name";
+      break;
+    case "startDate":
+      result = "Start Date";
+      break;
+    case "birthDate":
+      result = "Date of Birth";
+      break;
+    case "department":
+      result = "Department";
+      break;
+    case "street":
+      result = "Street";
+      break;
+    case "city":
+      result = "City";
+      break;
+    case "state":
+      result = "State";
+      break;
+    case "zipCode":
+      result = "Zip Code";
+      break;
+    default:
+      result = theadConvert;
+      break;
+  }
+  return result;
+}
 
 export default {
   create,
   read,
   deleteEmployee,
   updateEmployee,
+  convertCase,
 };

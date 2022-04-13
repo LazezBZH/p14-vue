@@ -12,7 +12,7 @@
     </p>
     <p>
       Projet en cours de développement, encore à gérer l'affichage de la
-      pagination, le choix du nombre d'entrées, le tri des données.
+      pagination, le choix du nombre d'entrées.
     </p>
     <div class="links">
       <p>Liens:</p>
