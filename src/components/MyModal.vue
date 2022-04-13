@@ -9,7 +9,7 @@
             <input
               type="text"
               v-model="employeeToEdit.firstName"
-              ref="txtName"
+              placeholder="Enter First Name"
             />
             <p>Last Name</p>
             <input
@@ -170,11 +170,11 @@ export default {
         firstName: employeeToEdit.value.firstName,
         lastName: employeeToEdit.value.lastName,
         startDate: employeeToEdit.value.startDate,
+        department: employeeToEdit.value.department,
         birthDate: employeeToEdit.value.birthDate,
         street: employeeToEdit.value.street,
         city: employeeToEdit.value.city,
         state: employeeToEdit.value.state,
-        department: employeeToEdit.value.department,
         zipCode: employeeToEdit.value.zipCode,
       };
       console.log("taskUpdated", employeeToEdit);
@@ -187,7 +187,13 @@ export default {
       if (
         employeeToEdit.value.firstName !== "" &&
         employeeToEdit.value.lastName !== "" &&
-        employeeToEdit.value.city !== ""
+        employeeToEdit.value.birthDate !== "" &&
+        employeeToEdit.value.startDate !== "" &&
+        employeeToEdit.value.street !== "" &&
+        employeeToEdit.value.city !== "" &&
+        employeeToEdit.value.state !== "" &&
+        employeeToEdit.value.zipCode !== "" &&
+        employeeToEdit.value.department !== ""
       ) {
         return true;
       } else {

@@ -45,9 +45,11 @@
             v-for="col in columns"
             v-on:click="sortTable(col)"
             :key="col"
-            width="9%"
+            width="9.2%"
           >
-            {{ convertCase(col) }}
+            <div class="sort">clic to sort</div>
+            <div class="sortby">{{ convertCase(col) }}</div>
+
             <div
               class="arrow"
               v-if="col == sortColumn"
@@ -130,7 +132,10 @@ export default {
   },
   computed: {
     columns: function columns() {
-      if (this.employeesFiltered.length == 0) {
+      if (
+        this.employeesFiltered == null ||
+        this.employeesFiltered.length == 0
+      ) {
         return [
           "First Name",
           "Last Name",
@@ -247,8 +252,9 @@ td {
   font-size: 0.9rem;
 }
 thead th {
+  height: 5rem;
   padding-bottom: 0.5rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
 }
 table tbody tr:nth-child(odd) {
@@ -309,7 +315,8 @@ caption {
   color: white;
 }
 button {
-  width: 80%;
+  width: 90%;
+  font-size: 0.8rem;
 }
 .none,
 .nones:first-child {
@@ -323,11 +330,26 @@ button {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAaCAYAAACgoey0AAAAAXNSR0IArs4c6QAAAwpJREFUSA21Vt1PUmEYP4dvkQ8JFMwtBRocWAkDbiqXrUWXzU1rrTt0bdVqXbb1tbW16C9IBUSmm27cODdneoXjputa6069qwuW6IIBIdLvdaF4OAcOiGeDc87zPs/vd57P96WpFq7p6enbGo1mjKZpeTabjU1MTCRagGnOZHFxcXxtbe1XKpUq7+zslJeXl//Mz8+Hy+Uy3RxSE9qTk5M3otFooVQqgef4Wl9f343FYoEmoISrxuNxFX5f9vb2jhn/PxUKhfLS0tIPfFifUESRUMV8Pv/M6XReRm5rTGQyGeXxeGxYe1ezeBpBOBx2rKysbO7v79d4Wy3Y2Nj4GQqFbgnhaugxwiuGJx99Pp9FLBbXxYTXvTqd7v3MzIy6riIWGxJnMpl7AwMD14xGYyMsSq1WUyQdUqn0eSPlusQIsbGrq+vl4OCgvhFQZd1utyv1en0gEolcqsi47nWJlUrlG5fLZVcoFFy2nDKSDpIWlUoVTCQSEk4lCHmJMZ2GTCbTiMVikfIZ88l7enoos9l8dXt7+z6fDicxSJUokqDX6xXcl2wCROoc0vQCWL3sNfLOSdzR0fHY4XC4tVotl40gmVwup9xuN4OQv+UyqCFGH9rg7SOGYVRcBs3IEG4J0nVnamrqOtvuBDGGgQg9+wHFcVEi4a0LNkbdd6TrPKo8ODc311mteIIYjT/a398/jK+s1jnVM0kXoufCFvq0GuiIGEVgQIhfoygM1QrteEa9dAL7ITiYCt4RMabOK5AyKKzKWtvupLcRciu8D5J0EuDDPyT/Snd39yh6VtY2NhYQSR9G79Ds7OxdskRjEyAufvb7/cPoO5Z6e1+xtVKrq6vfcFzyi/A3ZrPZ3GdNSlwgo5ekE4X2RIQGf2C1WlufFE0GBeGWYQ8YERWLxQtnUVB830MKLZfL9RHir8lkssCn2G751tZWEWe03zTKm15YWPiEiXXTYDB0Ig/t7yd8PRws4EicwWHxO4jHD8/C5HiTTqd1BwcHFozKU89origB+y/kmzgYpgOBQP4fGmUiZmJ+WNgAAAAASUVORK5CYII=");
 }
 .arrow {
-  float: right;
-  width: 12px;
-  height: 15px;
+  position: absolute;
+  top: 3rem;
+  width: 1rem;
+  height: 1.5rem;
   background-repeat: no-repeat;
   background-size: contain;
   background-position-y: bottom;
+  margin-left: 40%;
+}
+.sort {
+  position: absolute;
+  font-size: 0.7rem;
+  text-align: left;
+  top: 0.2rem;
+}
+.sortby {
+  position: absolute;
+  top: 1.5rem;
+}
+.nones {
+  position: relative;
 }
 </style>
