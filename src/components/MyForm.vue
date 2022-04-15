@@ -1,5 +1,6 @@
 <template>
   <div class="form">
+    <modale v-bind:revele="revele" v-bind:toggleModal="toggleModal"></modale>
     <div class="form-title">Create Employee</div>
     <form v-on:submit.prevent="createEmployee">
       <div class="datas">
@@ -43,15 +44,31 @@
           </option>
         </select>
       </div>
-      <button :disabled="!isFormValid">Save &#x00AE;</button>
+      <button :disabled="!isFormValid" v-on:click="toggleModal">
+        Save &#x00AE;
+      </button>
     </form>
   </div>
 </template>
 
 <script>
 import { ref, onMounted, computed } from "vue";
+import MyFormModal from "../components/MyFormModal.vue";
 export default {
   name: "MyForm",
+  data() {
+    return {
+      revele: false,
+    };
+  },
+  components: {
+    modale: MyFormModal,
+  },
+  methods: {
+    toggleModal: function () {
+      this.revele = !this.revele;
+    },
+  },
   emits: ["createemployee"],
   setup(props, context) {
     const firstName = ref("");

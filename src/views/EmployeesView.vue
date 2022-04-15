@@ -253,7 +253,7 @@ td {
 }
 thead th {
   height: 5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0rem;
   font-size: 1.2rem;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
 }
@@ -348,6 +348,7 @@ button {
 .sortby {
   position: absolute;
   top: 1.5rem;
+  margin-left: 10%;
 }
 .nones {
   position: relative;
