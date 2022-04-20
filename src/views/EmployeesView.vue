@@ -8,21 +8,7 @@
       @updateemployee="updateEmployee($event)"
       @cancel="cancelEdit"
     />
-    <!--  <div class="entries">
-      <label for="entries">Show</label>
-      <select
-        name="entries"
-        id="entries"
-        v-model="currentEntries"
-        @change="paginateEntries"
-      >
-        <option
-          v-for="select in showEntries"
-          :key="select"
-          :value="select"
-        ></option>
-      </select>
-    </div>-->
+
     <div class="input">
       <input
         type="search"
@@ -30,7 +16,10 @@
         id="search"
         placeholder="Search"
         v-model="letters"
-        @input="filter"
+        @input="
+          filter();
+          goFirstPage();
+        "
       />
     </div>
     <table width="90%" border="1">
@@ -63,7 +52,7 @@
           <td colspan="11" class="no-data">No data available in table</td>
         </tr>
 
-        <tr v-for="employee in employeesFiltered" :key="employee.id">
+        <tr v-for="employee in employeesFilteredToShow" :key="employee.id">
           <td class="none">{{ employee.id }}</td>
           <td>{{ employee.firstName }}</td>
           <td>{{ employee.lastName }}</td>
@@ -83,33 +72,46 @@
       </tbody>
     </table>
   </div>
+  <MyPagination
+    :totalPages="Math.ceil(employeesFiltered.length / perpage)"
+    :perPage="perpage"
+    :total="employeesFiltered.length"
+    :currentPage="currentPage"
+    @pagechanged="onPageChange"
+    @onClickPreviousPage="onClickPreviousPage"
+    @onClickNextPage="onClickNextPage"
+  />
   <nav class="link" id="link">
     <router-link to="/">&#x21A9; Home</router-link>
   </nav>
 </template>
 <script>
-// @ is an alias to /src
-
 import MyBanner from "@/components/MyBanner.vue";
 import MyModal from "@/components/MyModal.vue";
+import MyPagination from "@/components/MyPagination.vue";
 import { ref } from "vue";
 import employeesService from "@/services/employees.js";
 
 export default {
   name: "EmployeesView",
   data() {
-    /*return {
-      entries: [],
-      showEntries: [5, 10, 25, 50, 100],
-      currentEntries: 10,
-      filteredEntries: [],
-    };*/
+    return {
+      currentPage: 1,
+    };
   },
   components: {
     MyBanner,
     MyModal,
+    MyPagination,
   },
   methods: {
+    goFirstPage() {
+      this.$emit((this.currentPage = 1));
+    },
+    onPageChange(page) {
+      console.log(page);
+      this.currentPage = page;
+    },
     sortTable: function sortTable(col) {
       if (this.sortColumn === col) {
         this.ascending = !this.ascending;
@@ -128,6 +130,13 @@ export default {
         }
         return 0;
       });
+    },
+    onClickNextPage: function () {
+      if (this.currentPage * this.perpage < this.employeesFiltered.length)
+        this.currentPage++;
+    },
+    onClickPreviousPage: function () {
+      if (this.currentPage > 1) this.currentPage--;
     },
   },
   computed: {
@@ -150,9 +159,17 @@ export default {
       }
       return Object.keys(this.employeesFiltered[0]);
     },
+    employeesFilteredToShow: function () {
+      return this.employeesFiltered.filter((row, index) => {
+        let start = (this.currentPage - 1) * this.perpage;
+        let end = this.currentPage * this.perpage;
+        if (index >= start && index < end) return true;
+      });
+    },
   },
 
   setup() {
+    const perpage = 2;
     const employees = ref([]);
     const letters = ref("");
 
@@ -222,6 +239,7 @@ export default {
       updateEmployee,
       cancelEdit,
       convertCase,
+      perpage,
     };
   },
 };
