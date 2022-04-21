@@ -10,7 +10,12 @@
     />
     <div class="entries">
       <label for="choose-entries"> Show</label>
-      <select name="choose-entries" id="choose-entries" v-model="entrie">
+      <select
+        name="choose-entries"
+        id="choose-entries"
+        v-model="entrie"
+        @change="goFirstPage()"
+      >
         <option :value="5" :key="1">5</option>
         <option :value="10" :key="2">10</option>
         <option :value="25" :key="3">25</option>
@@ -42,7 +47,10 @@
           <th
             class="nones"
             v-for="col in columns"
-            v-on:click="sortTable(col)"
+            v-on:click="
+              sortTable(col);
+              goFirstPage();
+            "
             :key="col"
             width="9.2%"
           >
@@ -75,12 +83,42 @@
           <td>{{ employee.zipCode }}</td>
 
           <td>
-            <button @click="() => deleteEmployee(employee.id)">Delete</button>
+            <button
+              @click="
+                deleteEmployee(employee.id);
+                goFirstPage();
+              "
+            >
+              Delete
+            </button>
           </td>
           <td><button @click="() => toggle(employee)">Update</button></td>
         </tr>
       </tbody>
     </table>
+  </div>
+  <div v-if="currentPage === 1">
+    Showing {{ (currentPage - 1) * entrie + 1 }} to
+    {{ (currentPage - 1) * entrie + entrie }} of
+    {{ employeesFiltered.length }} entries
+  </div>
+
+  <div
+    v-if="
+      currentPage > 1 &&
+      currentPage < Math.ceil(employeesFiltered.length / entrie)
+    "
+  >
+    Showing {{ (currentPage - 1) * entrie + 1 }} to
+    {{ currentPage * entrie }}
+    of
+    {{ employeesFiltered.length }} entries
+  </div>
+  <div v-if="currentPage === Math.ceil(employeesFiltered.length / entrie)">
+    Showing {{ (currentPage - 1) * entrie + 1 }} to
+    {{ employeesFiltered.length }}
+    of
+    {{ employeesFiltered.length }} entries
   </div>
   <MyPagination
     :totalPages="Math.ceil(employeesFiltered.length / entrie)"
@@ -120,8 +158,8 @@ export default {
       this.$emit((this.currentPage = 1));
     },
     onPageChange(page) {
-      console.log(page);
       this.currentPage = page;
+      console.log("coucou page", page);
     },
     sortTable: function sortTable(col) {
       if (this.sortColumn === col) {
@@ -183,6 +221,7 @@ export default {
     const employees = ref([]);
     const letters = ref("");
     const entrie = ref("");
+    const page = ref("");
     const perpage = entrie;
     let employeesFiltered = ref([]);
 
@@ -251,6 +290,8 @@ export default {
       cancelEdit,
       convertCase,
       perpage,
+
+      page,
     };
   },
 };
