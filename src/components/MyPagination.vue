@@ -6,9 +6,9 @@
         @click="onClickFirstPage"
         :disabled="isInFirstPage"
         aria-label="Go to first page"
-        class="btn"
+        class="btn btnExt"
       >
-        First
+        &#60;&#60;
       </button>
     </li>
 
@@ -18,9 +18,9 @@
         @click="onClickPreviousPage"
         :disabled="isInFirstPage"
         aria-label="Go to previous page"
-        class="btn"
+        class="btn btnInt"
       >
-        Previous
+        &#60;
       </button>
     </li>
 
@@ -42,9 +42,9 @@
         @click="onClickNextPage"
         :disabled="isInLastPage"
         aria-label="Go to next page"
-        class="btn"
+        class="btn btnInt"
       >
-        Next
+        &#62;
       </button>
     </li>
 
@@ -54,9 +54,9 @@
         @click="onClickLastPage"
         :disabled="isInLastPage"
         aria-label="Go to last page"
-        class="btn"
+        class="btn btnExt"
       >
-        Last
+        &#62;&#62;
       </button>
     </li>
   </ul>
@@ -151,17 +151,27 @@ export default {
 <style scoped>
 .pagination {
   list-style-type: none;
+  width: auto;
+  display: flex;
+  justify-content: right;
+  margin-right: 5%;
 }
-
-.pagination-item {
-  display: inline-block;
+.pagination-item button {
+  background-color: #4444443e;
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
 }
-
-.active {
-  background-color: #4aae9b;
+button.active {
+  background-color: #444444;
   color: #ffffff;
 }
 .btn:disabled {
   display: none;
+}
+button.btnInt {
+  background-color: #6c83129e;
+}
+button.btnExt {
+  background-color: #6c8312dc;
 }
 </style>

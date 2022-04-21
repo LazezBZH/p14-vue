@@ -8,7 +8,17 @@
       @updateemployee="updateEmployee($event)"
       @cancel="cancelEdit"
     />
-
+    <div class="entries">
+      <label for="choose-entries"> Show</label>
+      <select name="choose-entries" id="choose-entries" v-model="entrie">
+        <option :value="5" :key="1">5</option>
+        <option :value="10" :key="2">10</option>
+        <option :value="25" :key="3">25</option>
+        <option :value="50" :key="4">50</option>
+        <option :value="100" :key="5">100</option>
+      </select>
+      <span>entries</span>
+    </div>
     <div class="input">
       <input
         type="search"
@@ -73,8 +83,8 @@
     </table>
   </div>
   <MyPagination
-    :totalPages="Math.ceil(employeesFiltered.length / perpage)"
-    :perPage="perpage"
+    :totalPages="Math.ceil(employeesFiltered.length / entrie)"
+    :perPage="entrie"
     :total="employeesFiltered.length"
     :currentPage="currentPage"
     @pagechanged="onPageChange"
@@ -97,6 +107,7 @@ export default {
   data() {
     return {
       currentPage: 1,
+      entrie: 5,
     };
   },
   components: {
@@ -132,7 +143,7 @@ export default {
       });
     },
     onClickNextPage: function () {
-      if (this.currentPage * this.perpage < this.employeesFiltered.length)
+      if (this.currentPage * this.entrie < this.employeesFiltered.length)
         this.currentPage++;
     },
     onClickPreviousPage: function () {
@@ -161,18 +172,18 @@ export default {
     },
     employeesFilteredToShow: function () {
       return this.employeesFiltered.filter((row, index) => {
-        let start = (this.currentPage - 1) * this.perpage;
-        let end = this.currentPage * this.perpage;
+        let start = (this.currentPage - 1) * this.entrie;
+        let end = this.currentPage * this.entrie;
         if (index >= start && index < end) return true;
       });
     },
   },
 
   setup() {
-    const perpage = 2;
     const employees = ref([]);
     const letters = ref("");
-
+    const entrie = ref("");
+    const perpage = entrie;
     let employeesFiltered = ref([]);
 
     let isInEditMode = ref(false);
@@ -253,7 +264,7 @@ h2 {
   font-weight: bold;
   background-color: #d5db99;
   border: 0.5rem ridge #d5db99;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 table {
   table-layout: fixed;
@@ -308,7 +319,7 @@ input {
 }
 .input {
   margin-right: 0;
-  margin-bottom: -3rem;
+  margin-bottom: -4.5rem;
   padding-right: 5%;
   text-align: right;
 }
@@ -370,5 +381,28 @@ button {
 }
 .nones {
   position: relative;
+}
+
+.entries {
+  width: 15%;
+  height: 2.5rem;
+  background-color: #444444;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-left: 3%;
+  margin-bottom: -2rem;
+}
+.entries select {
+  padding: 0.5rem;
+  margin: auto 1rem;
+  background-color: rgb(206, 206, 128);
+  font-size: 1rem;
+  font-weight: bolder;
+  border-radius: 0.5rem;
+}
+.entries label {
+  padding: 0.5rem;
+  margin: auto 0;
 }
 </style>

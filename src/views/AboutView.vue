@@ -11,8 +11,8 @@
       supprimer une entrée)
     </p>
     <p>
-      Projet en cours de développement, encore à gérer l'affichage de la
-      pagination, le choix du nombre d'entrées.
+      Projet en cours de développement, je souhaite encore ajouter la
+      possibilité de choisir un department (radio), responsive pas encore géré.
     </p>
     <div class="links">
       <p>Liens:</p>
