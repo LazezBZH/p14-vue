@@ -131,6 +131,7 @@
     {{ employeesFiltered.length }} entries
   </div>
   <MyPagination
+    v-if="employeesFiltered.length > 0"
     :totalPages="Math.ceil(employeesFiltered.length / entrie)"
     :perPage="entrie"
     :total="employeesFiltered.length"

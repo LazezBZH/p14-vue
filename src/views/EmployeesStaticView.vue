@@ -60,6 +60,10 @@
         </tr>
       </thead>
       <tbody>
+        <tr v-if="employees == undefined || employees.length <= 0">
+          <td colspan="11" class="no-data">No data available in table</td>
+        </tr>
+
         <tr v-for="employee in employeesFilteredToShow" :key="employee.id">
           <td class="none">{{ employee.id }}</td>
           <td>{{ employee.firstName }}</td>
@@ -114,6 +118,7 @@
     {{ employeesFiltered.length }} entries
   </div>
   <MyPagination
+    v-if="employeesFiltered.length > 0"
     :totalPages="Math.ceil(employeesFiltered.length / entrie)"
     :perPage="entrie"
     :total="employeesFiltered.length"
