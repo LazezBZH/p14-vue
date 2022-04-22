@@ -155,6 +155,7 @@ export default {
   display: flex;
   justify-content: right;
   margin-right: 5%;
+  margin-top: -1rem;
 }
 .pagination-item button {
   background-color: #4444443e;

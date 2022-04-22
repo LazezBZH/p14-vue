@@ -97,13 +97,20 @@
       </tbody>
     </table>
   </div>
-  <div v-if="currentPage === 1">
+  <div
+    class="showing"
+    v-if="
+      currentPage === 1 &&
+      currentPage < Math.ceil(employeesFiltered.length / entrie)
+    "
+  >
     Showing {{ (currentPage - 1) * entrie + 1 }} to
     {{ (currentPage - 1) * entrie + entrie }} of
     {{ employeesFiltered.length }} entries
   </div>
 
   <div
+    class="showing"
     v-if="
       currentPage > 1 &&
       currentPage < Math.ceil(employeesFiltered.length / entrie)
@@ -114,7 +121,10 @@
     of
     {{ employeesFiltered.length }} entries
   </div>
-  <div v-if="currentPage === Math.ceil(employeesFiltered.length / entrie)">
+  <div
+    class="showing"
+    v-if="currentPage === Math.ceil(employeesFiltered.length / entrie)"
+  >
     Showing {{ (currentPage - 1) * entrie + 1 }} to
     {{ employeesFiltered.length }}
     of
@@ -445,5 +455,12 @@ button {
 .entries label {
   padding: 0.5rem;
   margin: auto 0;
+}
+.showing {
+  color: #486200;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 3.5%;
 }
 </style>

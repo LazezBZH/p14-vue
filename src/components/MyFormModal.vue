@@ -1,6 +1,6 @@
 <template>
   <div class="modal" v-if="revele">
-    <div class="overlay" v-on:click="toggleModal;"></div>
+    <div class="overlay" v-on:click="toggleModal"></div>
     <div class="modale">
       <div>Employee created</div>
       <div class="x" v-on:click="toggleModal">X</div>
