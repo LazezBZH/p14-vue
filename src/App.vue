@@ -1,8 +1,9 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/employees">Employees</router-link> |
-    <router-link to="/about">About</router-link> |
+    <router-link to="/employees">Employees Dynamic Table</router-link> |
+    <router-link to="/employeesStatic">Employees Static Table</router-link> |
+    <router-link to="/about">About</router-link>
   </nav>
   <router-view />
 </template>

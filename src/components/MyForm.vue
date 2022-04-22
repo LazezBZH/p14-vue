@@ -32,6 +32,7 @@
           <p>Zip Code</p>
           <input
             type="number"
+            min="10000"
             placeholder="Enter The Zip Code"
             v-model="zipCode"
           />

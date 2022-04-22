@@ -161,6 +161,7 @@ export default {
   background-color: #4444443e;
   border-radius: 0.2rem;
   font-size: 1.2rem;
+  margin-left: 0.8rem;
 }
 button.active {
   background-color: #444444;
