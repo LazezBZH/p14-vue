@@ -69,7 +69,9 @@
         <tr v-if="employees == undefined || employees.length <= 0">
           <td colspan="11" class="no-data">No data available in table</td>
         </tr>
-
+        <tr v-if="employeesFiltered.length <= 0 && employees.length > 0">
+          <td colspan="11" class="no-data">No result for this research</td>
+        </tr>
         <tr v-for="employee in employeesFilteredToShow" :key="employee.id">
           <td class="none">{{ employee.id }}</td>
           <td>{{ employee.firstName }}</td>
