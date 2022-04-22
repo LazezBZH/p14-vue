@@ -7,8 +7,8 @@
     <p>Projet initial en React</p>
     <p>Cette version est en vuejs</p>
     <p>
-      Ajout de nouvelles fonctionnalités (pour l'instant possibilité d'éditer ou
-      supprimer une entrée)
+      Ajout de nouvelles fonctionnalités, possibilité d'éditer ou supprimer une
+      entrée, sélection des employés d'un département via bouton radio.
     </p>
     <p>
       Ce projet fonctionne avec le locastorage, onMounted ajoute à l'ouverture
@@ -16,10 +16,7 @@
       fonctionnalités du tableau sans devoir entrer par vous mêmes ces données,
       vous pouvez les supprimer ou les éditer, ajouter d'autres entrées.
     </p>
-    <p>
-      Projet en cours de développement, je souhaite encore ajouter la
-      possibilité de choisir un department (radio), responsive pas encore géré.
-    </p>
+    <p>Projet en cours de développement, responsive pas encore géré.</p>
     <div class="links">
       <p>Liens:</p>
       <a

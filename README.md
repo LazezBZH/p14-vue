@@ -19,7 +19,7 @@ Cette version est en vuejs
 
 - éditer une entrée
 - supprimer une entrée
-- sélectionner un department via boutons radio (en cours de dév)
+- sélectionner un department via boutons radio
 
 ### Ce projet fonctionne avec le locastorage, onMounted ajoute à l'ouverture quelques données dans le localstorage afin que vous puissiez voir les fonctionnalités du tableau sans devoir entrer par vous mêmes ces données, vous pouvez les supprimer ou les éditer, ajouter d'autres entrées.
 

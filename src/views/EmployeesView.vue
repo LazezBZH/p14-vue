@@ -8,6 +8,7 @@
       @updateemployee="updateEmployee($event)"
       @cancel="cancelEdit"
     />
+
     <div class="entries">
       <label for="choose-entries"> Show</label>
       <select
@@ -40,6 +41,57 @@
     <table width="90%" border="1">
       <caption>
         <h2>Current Employees</h2>
+        <div class="radio-filters">
+          <p>Select employees by department:</p>
+          <label for="all"
+            ><input
+              type="radio"
+              id="all"
+              value=""
+              v-model="selectedDepartment"
+            />All</label
+          >
+          <label for="sales"
+            ><input
+              type="radio"
+              id="sales"
+              value="Sales"
+              v-model="selectedDepartment"
+            />Sales</label
+          >
+          <label for="marketing"
+            ><input
+              type="radio"
+              id="marketing"
+              value="Marketing"
+              v-model="selectedDepartment"
+            />Marketing</label
+          >
+          <label for="engineering"
+            ><input
+              type="radio"
+              id="engineering"
+              value="Engineering"
+              v-model="selectedDepartment"
+            />Engineering</label
+          >
+          <label for="human-ressources"
+            ><input
+              type="radio"
+              id="human-ressources"
+              value="Human Resources"
+              v-model="selectedDepartment"
+            />Human Resources</label
+          >
+          <label for="legal"
+            ><input
+              type="radio"
+              id="legal"
+              value="Legal"
+              v-model="selectedDepartment"
+            />Legal</label
+          >
+        </div>
       </caption>
 
       <thead>
@@ -150,7 +202,7 @@
 import MyBanner from "@/components/MyBanner.vue";
 import MyModal from "@/components/MyModal.vue";
 import MyPagination from "@/components/MyPagination.vue";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import employeesService from "@/services/employees.js";
 
 export default {
@@ -233,6 +285,7 @@ export default {
   setup() {
     const employees = ref([]);
     const letters = ref("");
+    const selectedDepartment = ref("");
     const entrie = ref("");
     const page = ref("");
     const perpage = entrie;
@@ -266,7 +319,13 @@ export default {
               .includes(letters.value.toLocaleLowerCase())
         );
       }
-
+      if (selectedDepartment.value !== "") {
+        employeesFiltered.value = employeesFiltered.value.filter(
+          (emp) => emp.department === selectedDepartment.value
+        );
+        console.log("employeesFiltered", employeesFiltered);
+        console.log("selectedDepartment.value", selectedDepartment.value);
+      }
       console.log("employeesFiltered", employeesFiltered);
     }
 
@@ -290,9 +349,20 @@ export default {
       filter();
     }
 
+    watch(selectedDepartment, (newValue, oldValue) => {
+      console.log("new: ", newValue, "   ", "old: ", oldValue);
+      if (newValue !== "") {
+        filter();
+      } else {
+        employeesFiltered.value = employees.value;
+        filter();
+      }
+    });
+
     return {
       employees,
       letters,
+      selectedDepartment,
       employeesFiltered,
       filter,
       deleteEmployee,
@@ -373,7 +443,7 @@ input {
 }
 .input {
   margin-right: 0;
-  margin-bottom: -4.5rem;
+  margin-bottom: -7.5rem;
   padding-right: 5%;
   text-align: right;
 }
@@ -445,7 +515,7 @@ button {
   padding: 0.5rem;
   border-radius: 0.5rem;
   margin-left: 3%;
-  margin-bottom: -2rem;
+  margin-bottom: -2.5rem;
 }
 .entries select {
   padding: 0.5rem;
@@ -465,5 +535,39 @@ button {
   font-weight: bold;
   text-align: left;
   margin-left: 3.5%;
+}
+
+.radio-filters {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.radio-filters p {
+  line-height: 0.3rem;
+  font-weight: bold;
+}
+input[type="radio"] {
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.15rem solid darkgray;
+  border-radius: 50%;
+  outline: none;
+}
+
+input[type="radio"]:hover {
+  box-shadow: 0 0 1rem 0px #486200 inset;
+}
+
+input[type="radio"]:before {
+  content: "";
+  display: block;
+  width: 160%;
+  height: 100%;
+  margin: auto -0.45rem;
+  border-radius: 50%;
+}
+input[type="radio"]:checked:before {
+  background: #486200;
 }
 </style>
