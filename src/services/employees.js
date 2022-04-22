@@ -3,7 +3,7 @@ const storageKey = "employees-vue";
 
 function create(employee) {
   if (employees === null) {
-    employees = [];
+    employees = JSON.parse(localStorage.getItem("employees-vue"));
   }
   employees = [employee, ...employees];
   console.log("empl", employees);

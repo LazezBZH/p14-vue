@@ -21,13 +21,7 @@ Cette version est en vuejs
 - supprimer une entrée
 - sélectionner un department via boutons radio (en cours de dév)
 
-### Ce projet fonctionne avec le locastorage, il vous est donc nécessaire pour voir les fonctionnalités du tableau de la page "employees" d'entrer quelques données via le formulaire de la page d'accueil (conseillé minimum 6)
-
-Ajout d'une page Tableau statique, préremplie et non éditable, permettant
-de voir rapidement les fonctionnalités de tri, filtre et pagination. Pour
-voir toutes les fonctionnalités il est nécessaire d'aller sur la page
-Tableau dynamique après avoir entré via le formulaire de la page Home
-quelques données (stockées dans votre localstorage).
+### Ce projet fonctionne avec le locastorage, onMounted ajoute à l'ouverture quelques données dans le localstorage afin que vous puissiez voir les fonctionnalités du tableau sans devoir entrer par vous mêmes ces données, vous pouvez les supprimer ou les éditer, ajouter d'autres entrées.
 
 ## Project setup
 

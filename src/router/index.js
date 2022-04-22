@@ -13,12 +13,7 @@ const routes = [
 
     component: () => import("../views/EmployeesView.vue"),
   },
-  {
-    path: "/employeesStatic",
-    name: "employeesStatic",
 
-    component: () => import("../views/EmployeesStaticView.vue"),
-  },
   {
     path: "/about",
     name: "about",
