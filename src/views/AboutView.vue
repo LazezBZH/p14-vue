@@ -11,6 +11,13 @@
       supprimer une entrée)
     </p>
     <p>
+      Ajout d'une page Tableau statique, préremplie et non éditable, permettant
+      de voir rapidement les fonctionnalités de tri, filtre et pagination. Pour
+      voir toutes les fonctionnalités il est nécessaire d'aller sur la page
+      Tableau dynamique après avoir entré via le formulaire de la page Home
+      quelques données (stockées dans votre localstorage).
+    </p>
+    <p>
       Projet en cours de développement, je souhaite encore ajouter la
       possibilité de choisir un department (radio), responsive pas encore géré.
     </p>
