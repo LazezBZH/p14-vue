@@ -6,10 +6,16 @@
   <div class="about">
     <p>Projet initial en React</p>
     <p>Cette version est en vuejs</p>
-    <p>
-      Ajout de nouvelles fonctionnalités, possibilité d'éditer ou supprimer une
-      entrée, sélection des employés d'un département via bouton radio.
-    </p>
+    <p>Ajout de nouvelles fonctionnalités:</p>
+    <ul>
+      <li>possibilité d'éditer une entrée</li>
+      <li>possibilité de supprimer une entrée</li>
+      <li>
+        possibilité de sélectionner les employés d'un département via bouton
+        radio
+      </li>
+    </ul>
+
     <p>
       Ce projet fonctionne avec le locastorage, onMounted ajoute à l'ouverture
       quelques données dans le localstorage afin que vous puissiez voir les
@@ -44,6 +50,8 @@ h2 {
 }
 p {
   font-size: 1.5rem;
+  margin-bottom: 0;
+  margin-top: 3rem;
 }
 .links {
   width: 80%;
@@ -57,6 +65,6 @@ p {
 .links a {
   color: rgb(33, 178, 33);
   text-decoration: none;
-  margin-top: 1.7rem;
+  margin-top: 3.1rem;
 }
 </style>

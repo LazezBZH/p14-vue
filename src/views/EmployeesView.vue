@@ -57,6 +57,7 @@
               id="sales"
               value="Sales"
               v-model="selectedDepartment"
+              @click="goFirstPage()"
             />Sales</label
           >
           <label for="marketing"
@@ -65,6 +66,7 @@
               id="marketing"
               value="Marketing"
               v-model="selectedDepartment"
+              @click="goFirstPage()"
             />Marketing</label
           >
           <label for="engineering"
@@ -73,6 +75,7 @@
               id="engineering"
               value="Engineering"
               v-model="selectedDepartment"
+              @click="goFirstPage()"
             />Engineering</label
           >
           <label for="human-ressources"
@@ -81,6 +84,7 @@
               id="human-ressources"
               value="Human Resources"
               v-model="selectedDepartment"
+              @click="goFirstPage()"
             />Human Resources</label
           >
           <label for="legal"
@@ -89,6 +93,7 @@
               id="legal"
               value="Legal"
               v-model="selectedDepartment"
+              @click="goFirstPage()"
             />Legal</label
           >
         </div>

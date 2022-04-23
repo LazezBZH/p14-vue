@@ -177,8 +177,9 @@ export default {
         state: employeeToEdit.value.state,
         zipCode: employeeToEdit.value.zipCode,
       };
-      console.log("taskUpdated", employeeToEdit);
+      console.log("employeeUpdated", employeeToEdit);
       context.emit("updateemployee", employeeUpdated);
+      location.reload();
     }
     function cancel() {
       context.emit("cancel");
@@ -216,18 +217,18 @@ export default {
 
 <style scoped>
 .modal-background {
-  position: fixed;
+  position: absolute;
   z-index: 999;
   top: 0;
   left: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 150%;
   background-color: rgba(0, 0, 0, 0.7);
-  display: table;
-  transition: opacity 05s ease;
 }
 .modal {
   width: 40%;
+
   margin: 2rem auto;
   border: 0.5rem solid #2c3e50;
   border-radius: 0.8rem;

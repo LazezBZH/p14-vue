@@ -1,4 +1,5 @@
 let employees = [];
+
 const storageKey = "employees-vue";
 
 function create(employee) {
@@ -20,7 +21,7 @@ function updateEmployee(employee) {
     return;
   }
   employees[index] = employee;
-  save();
+  save(employee);
 }
 
 function deleteEmployee(id) {
