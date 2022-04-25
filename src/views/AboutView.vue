@@ -4,9 +4,12 @@
     OpenClassRooms
   </h2>
   <div class="about">
-    <p>Projet initial en React</p>
-    <p>Cette version est en vuejs</p>
-    <p>Ajout de nouvelles fonctionnalités:</p>
+    <p>Projet initial en React.</p>
+    <p>Cette version est en vuejs. (vue3)</p>
+    <p>
+      Ajout de nouvelles fonctionnalités (par rapport aux consignes
+      d'OpenClassRooms pour ce projet de formation):
+    </p>
     <ul>
       <li>possibilité d'éditer une entrée</li>
       <li>possibilité de supprimer une entrée</li>
@@ -17,12 +20,13 @@
     </ul>
 
     <p>
-      Ce projet fonctionne avec le locastorage, onMounted ajoute à l'ouverture
-      quelques données dans le localstorage afin que vous puissiez voir les
-      fonctionnalités du tableau sans devoir entrer par vous mêmes ces données,
-      vous pouvez les supprimer ou les éditer, ajouter d'autres entrées.
+      Ce projet fonctionne avec le locastorage, pour des raisons pratique
+      j'ajoute avec onMounted (à l'ouverture) quelques données dans le
+      localstorage afin que vous puissiez voir les fonctionnalités du tableau
+      sans devoir entrer par vous-mêmes ces données, vous pouvez les supprimer
+      ou les éditer, ajouter d'autres entrées.
     </p>
-    <p>Projet en cours de développement, responsive pas encore géré.</p>
+    <p>Projet adapté pour un écran de 950px minimum.</p>
     <div class="links">
       <p>Liens:</p>
       <a

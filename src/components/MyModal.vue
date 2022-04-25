@@ -85,14 +85,15 @@
 import { ref, computed } from "vue";
 export default {
   name: "MyModal",
+  emits: ["updateemployee", "cancel"],
   props: {
     employee: {
       require: true,
     },
   },
+
   setup(props, context) {
     let employeeToEdit = ref({ ...props.employee });
-
     const states = ref([
       { id: 1, value: "AL", name: "Alabama" },
       { id: 2, value: "AK", name: "Alaska" },
@@ -163,7 +164,6 @@ export default {
       { id: 5, value: "Legal", name: "Legal" },
     ]);
     let department = ref("");
-
     function saveEmployee() {
       const employeeUpdated = {
         id: employeeToEdit.value.id,
@@ -177,7 +177,7 @@ export default {
         state: employeeToEdit.value.state,
         zipCode: employeeToEdit.value.zipCode,
       };
-      console.log("employeeUpdated", employeeToEdit);
+      console.log("employeeUpdated", employeeUpdated);
       context.emit("updateemployee", employeeUpdated);
       location.reload();
     }
@@ -228,7 +228,6 @@ export default {
 }
 .modal {
   width: 40%;
-
   margin: 2rem auto;
   border: 0.5rem solid #2c3e50;
   border-radius: 0.8rem;

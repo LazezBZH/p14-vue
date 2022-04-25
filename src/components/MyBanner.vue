@@ -16,6 +16,8 @@ export default {
 <style scoped>
 .banner {
   margin-top: 5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
   height: 22vh;
   display: flex;
   flex-direction: row;
@@ -29,7 +31,8 @@ h1 {
   color: #444444;
 }
 .banner img {
-  height: 18rem;
+  max-height: 150%;
+  height: 15rem;
   position: relative;
   bottom: 8rem;
 }

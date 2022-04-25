@@ -206,6 +206,7 @@
 <script>
 import MyBanner from "@/components/MyBanner.vue";
 import MyModal from "@/components/MyModal.vue";
+
 import MyPagination from "@/components/MyPagination.vue";
 import { ref, watch } from "vue";
 import employeesService from "@/services/employees.js";
@@ -221,6 +222,7 @@ export default {
   components: {
     MyBanner,
     MyModal,
+
     MyPagination,
   },
   methods: {
@@ -298,6 +300,7 @@ export default {
 
     let isInEditMode = ref(false);
     let employeeToEdit = ref(null);
+    let employeeIsEdited = ref(false);
 
     employees.value = employeesService.read();
     filter();
@@ -342,6 +345,7 @@ export default {
       console.log("updateEmployee", employee);
       employeesService.updateEmployee(employee);
       employees.value = employeesService.read();
+      employeeIsEdited.value = true;
       cancelEdit();
     }
     function cancelEdit() {
@@ -433,8 +437,10 @@ table td:nth-child(4) {
   background-color: rgba(0, 0, 0, 0.08);
 }
 
-button {
+td button {
   margin: auto 1%;
+  padding: 0;
+  font-size: 0.6rem;
 }
 input {
   height: 2rem;
@@ -553,8 +559,8 @@ button {
 }
 input[type="radio"] {
   -webkit-appearance: none;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.3rem;
+  height: 1.3rem;
   border: 0.15rem solid darkgray;
   border-radius: 50%;
   outline: none;
@@ -567,12 +573,77 @@ input[type="radio"]:hover {
 input[type="radio"]:before {
   content: "";
   display: block;
-  width: 160%;
+  width: 180%;
   height: 100%;
   margin: auto -0.45rem;
   border-radius: 50%;
 }
 input[type="radio"]:checked:before {
   background: #486200;
+}
+
+@media (max-width: 1440px) {
+  input[type="radio"] {
+    -webkit-appearance: none;
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.6rem;
+    margin-left: 0.5rem;
+  }
+
+  input[type="radio"]:hover {
+    box-shadow: 0 0 1rem 0px #486200 inset;
+  }
+
+  input[type="radio"]:before {
+    width: 340%;
+    height: 100%;
+  }
+}
+@media (max-width: 1370px) {
+  .radio-filters {
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .entries {
+    width: 18%;
+  }
+}
+@media (max-width: 1300px) {
+  th,
+  td {
+    font-size: 0.9rem;
+  }
+  thead th {
+    padding-left: 0.1rem;
+    font-size: 1rem;
+  }
+
+  td button {
+    font-size: 0.6rem;
+  }
+}
+@media (max-width: 1230px) {
+  th,
+  td {
+    font-size: 0.8rem;
+  }
+  thead th {
+    font-size: 0.9rem;
+  }
+
+  td button {
+    font-size: 0.4rem;
+  }
+  .sortby {
+    margin-left: 0.2rem;
+  }
+}
+@media (max-width: 1150px) {
+  .entries {
+    width: 22%;
+  }
 }
 </style>
