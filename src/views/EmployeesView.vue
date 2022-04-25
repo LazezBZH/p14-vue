@@ -202,9 +202,11 @@
   <nav class="link" id="link">
     <router-link to="/">&#x21A9; Home</router-link>
   </nav>
+  <MyFooter />
 </template>
 <script>
 import MyBanner from "@/components/MyBanner.vue";
+import MyFooter from "@/components/MyFooter.vue";
 import MyModal from "@/components/MyModal.vue";
 
 import MyPagination from "@/components/MyPagination.vue";
@@ -222,7 +224,7 @@ export default {
   components: {
     MyBanner,
     MyModal,
-
+    MyFooter,
     MyPagination,
   },
   methods: {

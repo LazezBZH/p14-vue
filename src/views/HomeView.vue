@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <MyBanner />
+
     <h2>Your application to manage human ressources</h2>
     <h3>HRnet</h3>
     <div>
@@ -12,11 +13,13 @@
       <MyForm @createemployee="addEmployee" />
     </div>
   </div>
+  <MyFooter />
 </template>
 
 <script>
 // @ is an alias to /src
 import MyBanner from "@/components/MyBanner.vue";
+import MyFooter from "@/components/MyFooter.vue";
 import MyForm from "@/components/MyForm.vue";
 import employeesServices from "@/services/employees.js";
 import { onMounted } from "vue";
@@ -26,6 +29,7 @@ export default {
   components: {
     MyBanner,
     MyForm,
+    MyFooter,
   },
   setup() {
     onMounted(() => {
