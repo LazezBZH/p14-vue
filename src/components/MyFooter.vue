@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-main">
-      <p class="footer-text">Copyright 2021 Wealth Health</p>
+      <p class="footer-text">Copyright 2022 Wealth Health</p>
       <img class="footer-logo" alt="logo" src="../assets/WealthHealth.jpg" />
     </div>
   </footer>
