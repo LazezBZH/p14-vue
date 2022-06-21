@@ -1,10 +1,11 @@
 let employees = [];
+employees = JSON.parse(localStorage.getItem("employees-vue"));
 
 const storageKey = "employees-vue";
 
 function create(employee) {
   if (employees === null) {
-    employees = JSON.parse(localStorage.getItem("employees-vue"));
+    employees = [];
   }
   employees = [employee, ...employees];
   console.log("empl", employees);
